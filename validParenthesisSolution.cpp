@@ -13,7 +13,8 @@ public:
                 if(!brStack.empty() && brMap[c] == brStack.top()){
                     brStack.pop();
                 } else {
-                    return false;
+                    return false; // slightly less efficient is to continue appending to stack here: 
+				  // brStack.push(c);
                 }
             } else{
                 brStack.push(c);
