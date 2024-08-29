@@ -1,34 +1,27 @@
 class MinStack {
 private:
-int* arr;
-int length;
+    std::stack<int> stack;
+    std::stack<int> minStack; // why
 public:
-    MinStack() : length(0) {
-        arr = new int[length];
-    }
+    MinStack() {}
     
     void push(int val) {
-        arr[length] = val;
-        length++;
+        stack.push(val);
+        val = std::min(val, minStack.empty() ? val : minStack.top()); // what and why
+        minStack.push(val); // why
     }
     
     void pop() {
-        length--;
-        arr[length];
+        stack.pop();
+        minStack.pop(); // why
     }
     
     int top() {
-        return arr[length];
+        return stack.top();
     }
     
     int getMin() {
-        int minVal = arr[length];
-        for (int i = 0; i < length; i++){
-            if (arr[i] < minVal){
-                minVal = arr[i];
-            }
-        }
-        return minVal;
+        
     }
 };
 
